@@ -1,7 +1,7 @@
-import 'dart:convert';
-
-import 'package:awesome_project/map_demo.dart';
+import 'package:awesome_project/router.dart';
+import 'package:awesome_project/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mpflutter_core/mpflutter_core.dart';
 import 'package:mpflutter_wechat_api/mpflutter_wechat_api.dart';
 import 'package:mpflutter_core/mpjs/mpjs.dart' as mpjs;
@@ -95,105 +95,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-        appBarTheme: AppBarTheme(
-          color: Colors.blue,
-          foregroundColor: Colors.white,
-          elevation: 5.0,
-          centerTitle: false,
-        ),
-        fontFamily: "MiniTex",
-        fontFamilyFallback: ["MiniTex"],
-        /**
-         * 使用 iOS 风格页面转场
-         */
-        platform: TargetPlatform.iOS,
-      ),
-      routes: {
-        '/map_demo': (context) => WXMapView(),
-      },
-      home: const MyHomePage(title: 'MPFlutter Awesome Page'),
+    return GetMaterialApp(
+      title: 'Sound',
+      theme: AppTheme.theme,
+      getPages: RouterGet.genRoutes,
+      initialRoute: RouterGet.home,
       /**
        * 务必保留 MPNavigatorObserver，否则小程序的路由会出问题。
        */
-      navigatorObservers: [MPNavigatorObserver()],
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void wechatAPITest() {
-    wx.getSystemInfoAsync(GetSystemInfoAsyncOption()
-      ..success = (result) {
-        final snackBar = SnackBar(
-          content: Text('Device model = ${result.model}'),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      });
-  }
-
-  void toMapDemo() {
-    Navigator.of(context).pushNamed('/map_demo');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            MaterialButton(
-              onPressed: () {
-                wechatAPITest();
-              },
-              child: Text('Wechat API Test'),
-            ),
-            MaterialButton(
-              onPressed: () {
-                toMapDemo();
-              },
-              child: Text('Wechat Map Demo'),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      navigatorObservers: [MPNavigatorObserver(), GetObserver()],
     );
   }
 }
