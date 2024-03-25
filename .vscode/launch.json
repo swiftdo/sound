@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "awesome_project",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "awesome_project (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "awesome_project (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+          "name": "awesome_project (MPFlutter DevMode)",
+          "request": "launch",
+          "type": "dart",
+          "program": "lib/main.dart",
+          "toolArgs": [
+            "--dart-define=mpflutter.library.core=true",
+            "--dart-define=mpflutter.library.devmode=true"
+          ]
+        }
+    ]
+}

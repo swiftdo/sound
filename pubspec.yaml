@@ -1,0 +1,28 @@
+name: awesome_project
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mpflutter_core: ^2.5.0
+  mpflutter_build_tools: ^2.5.0
+  mpflutter_wechat_api: ^2.2.0
+  mpflutter_wechat_mapview: ^0.0.3
+
+flutter:
+  uses-material-design: true
+  # 使用 MiniTex，不再需要加载任何字体，注释后，字体不会打包到小程序包中。
+  # fonts:
+  #   - family: Roboto
+  #     fonts:
+  #       - asset: fonts/Roboto-Regular.ttf
+  #       - asset: fonts/Roboto-Bold.ttf
+  #   - family: Noto Sans SC
+  #     fonts:
+  #       - asset: fonts/NotoSansSC-Regular.ttf

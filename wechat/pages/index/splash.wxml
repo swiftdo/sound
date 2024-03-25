@@ -1,0 +1,3 @@
+<view wx:if="{{!readyToDisplay}}" style="position: absolute; width: 100vw; height: 100vh; z-index: 0; display: flex; align-items: center; justify-content: center; background-color: white; pointer-events: none;">
+  <image style="width: 88px;" src="splash.svg" />
+</view>
