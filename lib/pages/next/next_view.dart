@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../views/filling_slider.dart';
 import 'next_logic.dart';
 
 class NextPage extends StatelessWidget {
@@ -24,33 +25,19 @@ class NextPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else {
-            return ListView.builder(
-                padding: EdgeInsets.only(bottom: 50),
-                itemBuilder: (context, index) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.only(bottom: 50),
+              child: Column(
+                children: body.music.map((item) {
                   return Column(
-                    children: body.music[index].items.map((e) {
-                      return Container(
-                        margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 10,
-                                offset: Offset.zero)
-                          ],
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                        child: AudioPlayerWidget(
-                          audioUrl: body.musicBase + e.path,
-                        ),
-                      );
+                    children: item.items.map((e) {
+                      return AudioPlayerWidget(
+                          audioUrl: body.musicBase + e.path);
                     }).toList(),
                   );
-                },
-                itemCount: body.music.length);
+                }).toList(),
+              ),
+            );
           }
         },
       ),
@@ -68,12 +55,14 @@ class AudioPlayerWidget extends StatefulWidget {
 
 class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
   late AudioPlayer audioPlayer;
+  double volume = 1.0;
+  bool isPlaying = false;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     audioPlayer = AudioPlayer();
+    audioPlayer.setReleaseMode(ReleaseMode.loop);
   }
 
   @override
@@ -83,20 +72,63 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
   }
 
   playAudio() {
-    audioPlayer.play(UrlSource(widget.audioUrl));
+    audioPlayer.play(UrlSource(widget.audioUrl), volume: volume);
+    setState(() {
+      isPlaying = true;
+    });
   }
 
   pauseAudio() {
     audioPlayer.pause();
+    setState(() {
+      isPlaying = false;
+    });
+  }
+
+  setVolume(double newVolume) {
+    volume = newVolume;
+    audioPlayer.setVolume(volume);
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(widget.audioUrl),
-      trailing: IconButton(
-        icon: Icon(Icons.play_arrow),
-        onPressed: playAudio,
+    return Container(
+      margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 10, offset: Offset.zero)
+        ],
+        borderRadius: BorderRadius.circular(4),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(child: Text(widget.audioUrl)),
+              isPlaying
+                  ? IconButton(
+                      onPressed: pauseAudio,
+                      icon: Icon(Icons.pause),
+                    )
+                  : IconButton(
+                      icon: Icon(Icons.play_arrow),
+                      onPressed: playAudio,
+                    )
+            ],
+          ),
+          if (isPlaying)
+            FillingSlider(
+              direction: FillingSliderDirection.vertical,
+              initialValue: volume,
+              onFinish: setVolume,
+              onChange: (newVolume, oldVolume) {
+                setVolume(newVolume);
+                print("$newVolume $oldVolume");
+              },
+            ),
+        ],
       ),
     );
   }
