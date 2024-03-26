@@ -3,12 +3,6 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final theme = ThemeData(
     useMaterial3: true,
-    appBarTheme: AppBarTheme(
-      color: Colors.blue,
-      foregroundColor: Colors.white,
-      elevation: 5.0,
-      centerTitle: false,
-    ),
     fontFamily: "MiniTex",
     fontFamilyFallback: ["MiniTex"],
     /**

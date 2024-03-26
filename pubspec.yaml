@@ -15,6 +15,16 @@ dependencies:
   mpflutter_wechat_api: ^2.2.0
   mpflutter_wechat_mapview: ^0.0.3
   get: ^4.6.6
+  audioplayers: ^5.2.0
+
+
+dependency_overrides:
+  audioplayers_web:
+    git:
+      url: https://github.com/mpflutter/audioplayers.git
+      ref: mpflutter-v5.2.1
+      path: packages/audioplayers_web
+
 
 flutter:
   uses-material-design: true

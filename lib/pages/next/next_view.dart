@@ -15,6 +15,24 @@ class NextPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(Get.arguments['name']),
       ),
+      body: GetBuilder(
+        builder: (NextLogic logic) {
+          final body = logic.state.body;
+          if (body == null) {
+            return CircularProgressIndicator();
+          } else {
+            return ListView.builder(
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: body.music[index].items
+                        .map((e) => Text(e.name))
+                        .toList(),
+                  );
+                },
+                itemCount: body.music.length);
+          }
+        },
+      ),
     );
   }
 }
