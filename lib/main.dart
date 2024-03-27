@@ -99,10 +99,7 @@ class MyApp extends StatelessWidget {
       title: 'Sound',
       theme: AppTheme.theme,
       getPages: RouterGet.genRoutes,
-      initialRoute: RouterGet.home,
-      /**
-       * 务必保留 MPNavigatorObserver，否则小程序的路由会出问题。
-       */
+      initialRoute: RouterGet.main,
       navigatorObservers: [MPNavigatorObserver(), GetObserver()],
     );
   }

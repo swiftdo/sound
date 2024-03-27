@@ -16,6 +16,8 @@ dependencies:
   mpflutter_wechat_mapview: ^0.0.3
   get: ^4.6.6
   audioplayers: ^5.2.0
+  shared_preferences: ^2.2.2
+  flashy_tab_bar2: ^0.0.10
 
 
 dependency_overrides:
