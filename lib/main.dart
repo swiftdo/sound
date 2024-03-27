@@ -97,6 +97,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Sound',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
       getPages: RouterGet.genRoutes,
       initialRoute: RouterGet.main,

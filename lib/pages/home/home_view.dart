@@ -1,12 +1,9 @@
-import 'dart:math';
-
 import 'package:awesome_project/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'home_logic.dart';
-import 'package:mpflutter_core/mpjs/mpjs.dart' as mpjs;
-import 'package:mpflutter_wechat_api/mpflutter_wechat_api.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -36,33 +33,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text("HOME"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many test5 times :',
-            ),
-            GetBuilder(builder: (HomeLogic logic) {
-              return Text(
-                '${logic.state.counter}',
-                style: Theme.of(context).textTheme.headlineMedium,
-              );
-            }),
-            MaterialButton(
-              onPressed: () {
-                wechatAPITest();
-              },
-              child: Text('Wechat API Test'),
-            ),
-            MaterialButton(
-              onPressed: () {
-                toMapDemo();
-              },
-              child: Text('Wechat Map Demo'),
+            SvgPicture.network(
+              "https://jihulab.com/OHeroJ/sound/-/raw/main/music/nature/1-forest1.svg",
+              width: 40,
+              height: 40,
             ),
             MaterialButton(
               onPressed: () {
