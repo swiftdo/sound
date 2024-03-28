@@ -1,9 +1,9 @@
+import 'package:awesome_project/extensions.dart';
 import 'package:awesome_project/providers/models/gt_music.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MusicItemView extends StatelessWidget {
-  final String baseUrl;
   final GtMusicItem musicItem;
   final double size;
   final VoidCallback onTap;
@@ -12,7 +12,6 @@ class MusicItemView extends StatelessWidget {
     super.key,
     required this.musicItem,
     required this.size,
-    required this.baseUrl,
     required this.onTap,
   });
 
@@ -35,7 +34,7 @@ class MusicItemView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.network(
-              baseUrl + musicItem.icon,
+              musicItem.icon.url,
               width: 25,
               height: 25,
             ),

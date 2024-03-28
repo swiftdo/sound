@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:awesome_project/extensions.dart';
 import 'package:awesome_project/models/active_sound.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'home_state.dart';
@@ -9,6 +10,12 @@ class HomeLogic extends GetxController {
   final HomeState state = HomeState();
 
   final List<AudioPlayer> audioPlayers = [];
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+  }
 
   @override
   void onReady() {
@@ -38,6 +45,7 @@ class HomeLogic extends GetxController {
       audioPlayer.play(UrlSource(item.path.url), volume: item.volume);
       audioPlayers.add(audioPlayer);
     }
+    state.isPlaying = true;
     update();
   }
 
@@ -46,6 +54,8 @@ class HomeLogic extends GetxController {
     for (final audioPlayer in audioPlayers) {
       audioPlayer.pause();
     }
+    state.isPlaying = false;
+    refresh();
   }
 
   // 播放
@@ -53,5 +63,7 @@ class HomeLogic extends GetxController {
     for (final audioPlayer in audioPlayers) {
       audioPlayer.resume();
     }
+    state.isPlaying = true;
+    refresh();
   }
 }

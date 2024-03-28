@@ -76,11 +76,8 @@ class MusicsPage extends StatelessWidget {
                             .map((e) => MusicItemView(
                                   size: itemW,
                                   musicItem: e,
-                                  baseUrl: body.musicBase,
                                   onTap: () {
-                                    Get.find<HomeLogic>()
-                                        .activeSound(ActiveSound.fromMusic(e));
-                                    Get.back();
+                                    Get.back(result: ActiveSound.fromMusic(e));
                                   },
                                 ))
                             .toList(),
