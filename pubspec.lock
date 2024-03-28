@@ -340,6 +340,30 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.9"
+  scrollable_list_tab_scroller:
+    dependency: "direct main"
+    description:
+      name: scrollable_list_tab_scroller
+      sha256: "8be72df52300a22f2757da62b71c6b0f12a7dcc5b488143c3f33083c5ca50add"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.2"
+  scrollable_positioned_list:
+    dependency: transitive
+    description:
+      name: scrollable_positioned_list
+      sha256: "1b54d5f1329a1e263269abc9e2543d90806131aa14fe7c6062a8054d57249287"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.8"
+  scrolls_to_top:
+    dependency: transitive
+    description:
+      name: scrolls_to_top
+      sha256: "8d6684d936b9c1a19c19ee93c836251ae9c803023290762a30cb7657e88e272e"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.1"
   shared_preferences:
     dependency: "direct main"
     description:

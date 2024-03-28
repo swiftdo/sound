@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: ^2.2.2
   flashy_tab_bar2: ^0.0.10
   flutter_svg: ^2.0.10+1
+  scrollable_list_tab_scroller: ^1.1.2
 
 
 dependency_overrides:
