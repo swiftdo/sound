@@ -3,7 +3,9 @@ import 'package:awesome_project/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../constants.dart';
 import '../../models/active_sound.dart';
+import '../../services/sp_service.dart';
 import '../../views/icon_button.dart';
 import '../../views/player/needle_anim.dart';
 import '../../views/player/record_anim.dart';
@@ -53,6 +55,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         controller_record.forward();
       }
     });
+
+    getCacheData();
+  }
+
+  getCacheData() async {
+    final data = Get.find<SpService>().getObject(Constants.cacheActiveSound);
+    if (data != null) {
+      final sound = ActiveSound.fromJson(Map<String, dynamic>.from(data));
+      Future.delayed(Duration(milliseconds: 500), () {
+        logic.activeSound(sound);
+        controller_record.forward();
+        controller_needle.forward();
+      });
+    }
   }
 
   @override
@@ -174,6 +190,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     final activeSound = await Get.toNamed(RouterGet.musics);
     if (activeSound is ActiveSound) {
       logic.activeSound(activeSound);
+      controller_record.forward();
+      controller_needle.forward();
     }
   }
 

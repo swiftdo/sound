@@ -9,5 +9,6 @@ class AppTheme {
      * 使用 iOS 风格页面转场
      */
     platform: TargetPlatform.iOS,
+    scaffoldBackgroundColor: Colors.white,
   );
 }

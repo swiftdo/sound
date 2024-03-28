@@ -1,21 +1,17 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:awesome_project/extensions.dart';
 import 'package:awesome_project/models/active_sound.dart';
+import 'package:awesome_project/services/sp_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../constants.dart';
 import 'home_state.dart';
 
 class HomeLogic extends GetxController {
   final HomeState state = HomeState();
 
   final List<AudioPlayer> audioPlayers = [];
-
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-  }
 
   @override
   void onReady() {
@@ -39,6 +35,8 @@ class HomeLogic extends GetxController {
     }
     audioPlayers.clear();
     state.activeSound = sound;
+
+    Get.find<SpService>().putObject(Constants.cacheActiveSound, sound.toJson());
 
     for (final item in sound.items) {
       final audioPlayer = AudioPlayer();

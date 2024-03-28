@@ -15,6 +15,9 @@ class SettingPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('设置'),
       ),
+      body: Container(
+        child: Text('版本号: v1.0.0'),
+      ),
     );
   }
 }

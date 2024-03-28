@@ -1,5 +1,6 @@
 import 'package:awesome_project/router.dart';
-import 'package:awesome_project/services/sp_service.dart';
+import 'package:awesome_project/services/sp_service.dart'
+    deferred as sp_service;
 import 'package:awesome_project/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,8 +10,9 @@ import 'package:mpflutter_core/mpjs/mpjs.dart' as mpjs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Get.putAsync(() => SpService().init());
-  runMPApp(const MyApp());
+  final pages = await RouterGet.genRoutes();
+  initServices();
+  runMPApp(MyApp(pages: pages));
 
   /**
    * 务必保留这段代码，否则第一次调用 wx 接口会提示异常。
@@ -26,6 +28,15 @@ void main() async {
    */
   // ignore: unused_local_variable
   final appDelegate = MyAppDelegate();
+}
+
+initServices() async {
+  await sp_service.loadLibrary();
+  try {
+    await Get.putAsync(() => sp_service.SpService().init());
+  } catch (e) {
+    debugPrint(e.toString());
+  }
 }
 
 class MyAppDelegate {
@@ -94,7 +105,8 @@ class MyAppDelegate {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final List<GetPage>? pages;
+  const MyApp({super.key, required this.pages});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +114,7 @@ class MyApp extends StatelessWidget {
       title: 'Sound',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      getPages: RouterGet.genRoutes,
+      getPages: pages,
       initialRoute: RouterGet.main,
       navigatorObservers: [MPNavigatorObserver(), GetObserver()],
     );
