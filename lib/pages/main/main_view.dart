@@ -20,6 +20,7 @@ class MainPage extends StatelessWidget {
     return GetBuilder(builder: (MainLogic logic) {
       return Scaffold(
         body: PageView(
+          physics: NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
             HomePage(),

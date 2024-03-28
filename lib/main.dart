@@ -1,4 +1,5 @@
 import 'package:awesome_project/router.dart';
+import 'package:awesome_project/services/sp_service.dart';
 import 'package:awesome_project/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,9 @@ import 'package:mpflutter_core/mpflutter_core.dart';
 import 'package:mpflutter_wechat_api/mpflutter_wechat_api.dart';
 import 'package:mpflutter_core/mpjs/mpjs.dart' as mpjs;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Get.putAsync(() => SpService().init());
   runMPApp(const MyApp());
 
   /**

@@ -2,15 +2,27 @@ class GtMusicItem {
   final String name;
   final String path;
   final String icon;
+  final String cover;
 
-  GtMusicItem({required this.name, required this.path, required this.icon});
+  GtMusicItem({
+    required this.name,
+    required this.path,
+    required this.icon,
+    required this.cover,
+  });
 
   GtMusicItem.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         path = json['path'],
-        icon = json['icon'];
+        icon = json['icon'],
+        cover = json['cover'];
 
-  Map<String, dynamic> toJson() => {'name': name, 'path': path, 'icon': icon};
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'path': path,
+        'icon': icon,
+        "cover": cover,
+      };
 }
 
 class GtMusic {
