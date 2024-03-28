@@ -16,8 +16,12 @@ class VIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: this.onTap,
+    return MaterialButton(
+      padding: EdgeInsets.symmetric(vertical: 4),
+      onPressed: this.onTap,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0), // 设置圆角的半径
+      ),
       child: Column(
         children: [
           Container(
