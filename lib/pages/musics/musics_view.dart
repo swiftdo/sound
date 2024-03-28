@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../models/active_sound.dart';
 import '../../views/music_item_view.dart';
+import '../home/home_logic.dart';
 import 'musics_logic.dart';
 import 'package:scrollable_list_tab_scroller/scrollable_list_tab_scroller.dart';
 
@@ -75,6 +77,11 @@ class MusicsPage extends StatelessWidget {
                                   size: itemW,
                                   musicItem: e,
                                   baseUrl: body.musicBase,
+                                  onTap: () {
+                                    Get.find<HomeLogic>()
+                                        .activeSound(ActiveSound.fromMusic(e));
+                                    Get.back();
+                                  },
                                 ))
                             .toList(),
                       )

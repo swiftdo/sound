@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:get/get.dart';
 
 import 'models/gt_main.dart';
+import 'package:awesome_project/constants.dart';
 
 class GitlabProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = 'https://jihulab.com/OHeroJ/sound/-/raw/main/';
+    httpClient.baseUrl = Constants.gitlabBaseUrl;
   }
 
   Future<GtMain> getMainJson() async {

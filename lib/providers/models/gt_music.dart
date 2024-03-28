@@ -4,6 +4,7 @@ class GtMusicItem {
   final String icon;
   final String cover;
   final bool? hideName;
+  final double volume; // 音量
 
   GtMusicItem({
     required this.name,
@@ -11,6 +12,7 @@ class GtMusicItem {
     required this.icon,
     required this.cover,
     this.hideName,
+    required this.volume,
   });
 
   GtMusicItem.fromJson(Map<String, dynamic> json)
@@ -18,6 +20,7 @@ class GtMusicItem {
         path = json['path'],
         icon = json['icon'],
         cover = json['cover'],
+        volume = json['volume'] ?? 0.5,
         hideName = json['hide_name'];
 
   Map<String, dynamic> toJson() => {
@@ -25,7 +28,8 @@ class GtMusicItem {
         'path': path,
         'icon': icon,
         "cover": cover,
-        "hide_name": hideName
+        "hide_name": hideName,
+        "volume": volume,
       };
 }
 

@@ -1,5 +1,7 @@
+import '../../models/active_sound.dart';
+
 class HomeState {
-  int counter = 0;
+  ActiveSound? activeSound;
 
   HomeState() {
     ///Initialize variables
