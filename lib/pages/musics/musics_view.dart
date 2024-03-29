@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../models/active_sound.dart';
 import '../../views/music_item_view.dart';
-import '../home/home_logic.dart';
 import 'musics_logic.dart';
 import 'package:scrollable_list_tab_scroller/scrollable_list_tab_scroller.dart';
 
@@ -38,7 +37,7 @@ class MusicsPage extends StatelessWidget {
                     body.music[index].name,
                     style: TextStyle(
                       color: active ? Colors.black : Colors.grey,
-                      fontSize: active ? 16 : 14,
+                      fontSize: 14,
                     ),
                   ),
                 );

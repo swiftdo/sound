@@ -41,6 +41,12 @@ class HomeLogic extends GetxController {
 
     for (final item in sound.items) {
       final audioPlayer = AudioPlayer();
+      audioPlayer.setAudioContext(
+        AudioContext(
+          android: AudioContextAndroid(stayAwake: true),
+          iOS: AudioContextIOS(category: AVAudioSessionCategory.playback),
+        ),
+      );
       audioPlayer.play(UrlSource(item.path.url), volume: item.volume);
       audioPlayers.add(audioPlayer);
     }
