@@ -35,8 +35,9 @@ class HomeLogic extends GetxController {
     }
     audioPlayers.clear();
     state.activeSound = sound;
-
+    debugPrint("🐶：：SpService activeSound use");
     Get.find<SpService>().putObject(Constants.cacheActiveSound, sound.toJson());
+    debugPrint("🐶：：SpService activeSound use success");
 
     for (final item in sound.items) {
       final audioPlayer = AudioPlayer();

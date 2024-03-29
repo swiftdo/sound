@@ -10,8 +10,9 @@ import 'package:mpflutter_core/mpjs/mpjs.dart' as mpjs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   final pages = await RouterGet.genRoutes();
-  initServices();
+  await initServices();
   runMPApp(MyApp(pages: pages));
 
   /**
@@ -31,11 +32,12 @@ void main() async {
 }
 
 initServices() async {
-  await sp_service.loadLibrary();
   try {
+    await sp_service.loadLibrary();
     await Get.putAsync(() => sp_service.SpService().init());
+    debugPrint("🐶：：SpService Get put success");
   } catch (e) {
-    debugPrint(e.toString());
+    debugPrint("hah::" + e.toString());
   }
 }
 

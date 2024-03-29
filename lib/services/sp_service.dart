@@ -7,10 +7,12 @@ class SpService extends GetxService {
   late SharedPreferences _prefs;
 
   Future<SpService> init() async {
+    debugPrint("🐶：：SpService init");
     try {
       _prefs = await SharedPreferences.getInstance();
+      debugPrint("🐶：：SpService init success");
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint("eeee::" + e.toString());
     }
     return this;
   }

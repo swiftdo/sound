@@ -60,7 +60,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   getCacheData() async {
+    debugPrint("🐶：：SpService HomeView use");
     final data = Get.find<SpService>().getObject(Constants.cacheActiveSound);
+    debugPrint("🐶：：SpService HomeView use Success");
     if (data != null) {
       final sound = ActiveSound.fromJson(Map<String, dynamic>.from(data));
       Future.delayed(Duration(milliseconds: 500), () {
