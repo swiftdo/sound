@@ -2,6 +2,7 @@ import 'package:awesome_project/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../views/keep_alive_wrapper.dart';
 import '../setting/setting_view.dart';
 import 'main_logic.dart';
 
@@ -23,8 +24,8 @@ class MainPage extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
-            HomePage(),
-            SettingPage(),
+            KeepAliveWrapper(child: HomePage()),
+            KeepAliveWrapper(child: SettingPage()),
           ],
         ),
         bottomNavigationBar: FlashyTabBar(
