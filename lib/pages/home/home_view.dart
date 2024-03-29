@@ -78,6 +78,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: Text("觅音"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add_circle_outline),
+            onPressed: () {
+              Get.toNamed(RouterGet.mix);
+            },
+          )
+        ],
       ),
       body: GetBuilder(
         builder: (HomeLogic logic) {
