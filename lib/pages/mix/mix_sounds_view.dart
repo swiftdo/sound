@@ -1,3 +1,4 @@
+import 'package:awesome_project/pages/mix/mix_logic.dart';
 import 'package:flutter/material.dart';
 
 import '../../providers/models/gt_music.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 import '../../views/music_item_view.dart';
 
 class MixSoundsView extends StatelessWidget {
+  final logic = Get.find<MixLogic>();
   final List<GtMusic> sounds;
 
   MixSoundsView({super.key, required this.sounds});
@@ -43,7 +45,10 @@ class MixSoundsView extends StatelessWidget {
                       (e) => MusicItemView(
                         size: itemW,
                         musicItem: e,
-                        onTap: () {},
+                        onTap: () {
+                          logic.selectSound(e);
+                        },
+                        isPlaying: logic.isPlaying(e),
                       ),
                     )
                     .toList(),

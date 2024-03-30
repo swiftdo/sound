@@ -82,6 +82,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           IconButton(
             icon: Icon(Icons.add_circle_outline),
             onPressed: () {
+              logic.pause();
               Get.toNamed(RouterGet.mix);
             },
           )

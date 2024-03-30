@@ -55,9 +55,9 @@ class ActiveSound {
         items = [musicItem];
 
   ActiveSound.fromGroupSound(GroupSound groupSound)
-      : name = groupSound.name,
-        icon = groupSound.icon,
-        cover = groupSound.cover,
+      : name = groupSound.name ?? '',
+        icon = groupSound.icon ?? '',
+        cover = groupSound.cover ?? '',
         type = ActiveSoundType.group,
         items = groupSound.items;
 }

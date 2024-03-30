@@ -2,17 +2,17 @@
 import '../providers/models/gt_music.dart';
 
 class GroupSound {
-  final String name; // 名字
-  final String icon; // icon
-  final String cover;
-  final String id; // uuid 吧
-  final List<GtMusicItem> items; // 音乐组合
+  String? name; // 名字
+  String? icon; // icon
+  String? cover;
+  String? id; // uuid 吧
+  List<GtMusicItem> items; // 音乐组合
 
   GroupSound({
-    required this.name,
-    required this.icon,
-    required this.cover,
-    required this.id,
+    this.name,
+    this.icon,
+    this.cover,
+    this.id,
     this.items = const [],
   });
 

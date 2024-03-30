@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../views/keep_alive_wrapper.dart';
+import 'mix_header_view.dart';
 import 'mix_logic.dart';
 
 // 声音混合
@@ -21,14 +22,18 @@ class _MixPageState extends State<MixPage> with SingleTickerProviderStateMixin {
 
   late TabController _tabController;
 
-  List tabs = ["声音", "音量"];
+  List<String> tabs = ["声音", "音量"];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     _tabController = TabController(length: tabs.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -48,8 +53,11 @@ class _MixPageState extends State<MixPage> with SingleTickerProviderStateMixin {
 
           return Column(
             children: [
-              Container(
-                height: Get.height / 2 - 100,
+              MixHeaderView(
+                onTap: () {
+                  logic.togglePageState();
+                  _tabController.animateTo(logic.state.mixPageState.index);
+                },
               ),
               Expanded(
                 child: Container(
@@ -73,6 +81,9 @@ class _MixPageState extends State<MixPage> with SingleTickerProviderStateMixin {
                             Colors.transparent),
                         controller: _tabController,
                         tabs: tabs.map((e) => Tab(text: e)).toList(),
+                        onTap: (index) {
+                          logic.tabOnTap(index);
+                        },
                       ),
                       Expanded(
                         child: TabBarView(
