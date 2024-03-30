@@ -23,11 +23,14 @@ class MixHeaderView extends StatelessWidget {
           clipBehavior: Clip.none,
           children: logic.state.activeSound.items.map((musicItem) {
             int index = logic.state.activeSound.items.indexOf(musicItem);
-            return Container(
+            return AnimatedPadding(
               padding: EdgeInsets.only(
                   left: logic.state.mixPageState == MixPageState.sound
                       ? (index * (size + 10))
                       : index * size * 0.8),
+              duration: Duration(
+                milliseconds: 250,
+              ),
               child: GestureDetector(
                 onTap: onTap,
                 child: Container(
