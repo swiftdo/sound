@@ -86,14 +86,14 @@ class MixLogic extends GetxController {
     update();
   }
 
-  updateSoundVolume(
-      {required GtMusicItem soundItem, required double newVolume}) {
-    if (soundItem.volume != newVolume) {
-      soundItem.volume = newVolume;
-      final player = audioPlayerMap[soundItem.path];
-      if (player != null) {
-        player.setVolume(newVolume);
-      }
+  updateSoundVolume({
+    required GtMusicItem soundItem,
+    required double newVolume,
+  }) {
+    soundItem.volume = newVolume;
+    final player = audioPlayerMap[soundItem.path];
+    if (player != null) {
+      player.setVolume(newVolume);
     }
   }
 }

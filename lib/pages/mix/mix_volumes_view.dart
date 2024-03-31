@@ -14,14 +14,14 @@ class MixVolumesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double size = 50;
+    final double size = 44;
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10),
       alignment: Alignment.center,
       child: Wrap(
-        spacing: 5,
+        spacing: 10,
         children: logic.state.activeSound.items.map((soundItem) {
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
             child: Stack(
               children: [
                 FillingSlider(
@@ -31,12 +31,15 @@ class MixVolumesView extends StatelessWidget {
                   initialValue: soundItem.volume,
                   onFinish: (volume) {
                     logic.updateSoundVolume(
-                        soundItem: soundItem, newVolume: volume);
-                    soundItem.volume = volume;
+                      soundItem: soundItem,
+                      newVolume: volume,
+                    );
                   },
                   onChange: (newVolume, oldVolume) {
                     logic.updateSoundVolume(
-                        soundItem: soundItem, newVolume: newVolume);
+                      soundItem: soundItem,
+                      newVolume: newVolume,
+                    );
                     print("$newVolume $oldVolume");
                   },
                 ),

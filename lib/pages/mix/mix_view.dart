@@ -87,6 +87,7 @@ class _MixPageState extends State<MixPage> with SingleTickerProviderStateMixin {
                       ),
                       Expanded(
                         child: TabBarView(
+                          physics: NeverScrollableScrollPhysics(),
                           //构建
                           controller: _tabController,
                           children: [
