@@ -103,13 +103,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     GestureDetector(
                       onTap: () {
                         if (state.isPlaying) {
-                          logic.pause();
-                          controller_record.stop(canceled: false);
-                          controller_needle.reverse();
+                          stopPlay();
                         } else {
-                          logic.play();
-                          controller_record.forward();
-                          controller_needle.forward();
+                          restartPlay();
                         }
                       },
                       child: Container(
@@ -164,13 +160,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(bottom: 10),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.black.withOpacity(0.1),
+                      color: Color(0xffFAFAFA),
                     ),
                     child: Wrap(
-                      spacing: 30,
+                      spacing: 24,
                       children: [
                         VIconButton(
                           title: '定时',
@@ -179,7 +175,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ),
                         GestureDetector(
                           onTap: () {
-                            logic.pause();
+                            stopPlay();
                             Get.toNamed(RouterGet.mix);
                           },
                           child: Container(
@@ -216,6 +212,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
+  @override
+  void dispose() {
+    controller_record.dispose();
+    controller_needle.dispose();
+    super.dispose();
+  }
+
   selectMusic() async {
     final activeSound = await Get.toNamed(RouterGet.musics);
     if (activeSound is ActiveSound) {
@@ -225,10 +228,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     }
   }
 
-  @override
-  void dispose() {
-    controller_record.dispose();
-    controller_needle.dispose();
-    super.dispose();
+  void stopPlay() {
+    logic.pause();
+    controller_record.stop(canceled: false);
+    controller_needle.reverse();
+  }
+
+  void restartPlay() {
+    logic.play();
+    controller_record.forward();
+    controller_needle.forward();
   }
 }
