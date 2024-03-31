@@ -50,6 +50,16 @@ class MixLogic extends GetxController {
       audioPlayerMap[audioPlayerKey]?.pause();
       audioPlayerMap[audioPlayerKey]?.stop();
     } else {
+      // 判断是否已满6个
+      if (state.activeSound.items.length >= 6) {
+        // 剔除第一个
+        final first = state.activeSound.items.first;
+        final firstPlayerKey = first.path;
+        state.activeSound.items.removeAt(0);
+        audioPlayerMap[firstPlayerKey]?.stop();
+        audioPlayerMap[firstPlayerKey]?.dispose();
+        audioPlayerMap.remove(firstPlayerKey);
+      }
       state.activeSound.items.add(item);
       final audioPlayer = AudioPlayer();
       audioPlayer.setReleaseMode(ReleaseMode.loop);
@@ -74,5 +84,16 @@ class MixLogic extends GetxController {
       state.mixPageState = MixPageState.sound;
     }
     update();
+  }
+
+  updateSoundVolume(
+      {required GtMusicItem soundItem, required double newVolume}) {
+    if (soundItem.volume != newVolume) {
+      soundItem.volume = newVolume;
+      final player = audioPlayerMap[soundItem.path];
+      if (player != null) {
+        player.setVolume(newVolume);
+      }
+    }
   }
 }

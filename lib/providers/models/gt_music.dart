@@ -4,7 +4,7 @@ class GtMusicItem {
   final String icon;
   final String cover;
   final bool? hideName;
-  final double volume; // 音量
+  double volume; // 音量
 
   GtMusicItem({
     required this.name,

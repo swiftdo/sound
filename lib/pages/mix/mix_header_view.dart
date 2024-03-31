@@ -25,8 +25,8 @@ class MixHeaderView extends StatelessWidget {
             int index = logic.state.activeSound.items.indexOf(musicItem);
             return AnimatedPadding(
               padding: EdgeInsets.only(
-                  left: logic.state.mixPageState == MixPageState.sound
-                      ? (index * (size + 10))
+                  left: logic.state.mixPageState == MixPageState.volume
+                      ? (index * (size + 6))
                       : index * size * 0.8),
               duration: Duration(
                 milliseconds: 250,
