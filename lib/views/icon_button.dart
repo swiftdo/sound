@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class VIconButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
-  final double iconSize;
+  final double size;
   final IconData icon;
 
   const VIconButton({
@@ -11,43 +11,41 @@ class VIconButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     required this.icon,
-    this.iconSize = 40,
+    this.size = 44,
   });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      padding: EdgeInsets.symmetric(vertical: 4),
-      onPressed: this.onTap,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0), // 设置圆角的半径
-      ),
-      child: Column(
-        children: [
-          Container(
-            width: iconSize,
-            height: iconSize,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(iconSize / 2),
-              border: Border.all(
-                width: 1,
-                color: Colors.black,
-              ),
-            ),
-            child: Icon(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(size / 2),
+          border: Border.all(
+            color: Colors.black,
+            width: 1,
+          ),
+        ),
+        width: size,
+        height: size,
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
               icon,
-              size: iconSize / 2,
+              size: size * 0.36,
             ),
-          ),
-          SizedBox(
-            height: 3,
-          ),
-          Text(
-            this.title,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
+            SizedBox(
+              height: 2,
+            ),
+            Text(
+              this.title,
+              style: TextStyle(fontSize: 8),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -78,15 +78,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: Text("觅音"),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add_circle_outline),
-            onPressed: () {
-              logic.pause();
-              Get.toNamed(RouterGet.mix);
-            },
-          )
-        ],
       ),
       body: GetBuilder(
         builder: (HomeLogic logic) {
@@ -170,23 +161,51 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 right: 0,
                 bottom: 0,
                 child: Container(
+                  alignment: Alignment.center,
                   margin: EdgeInsets.only(bottom: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      VIconButton(
-                        title: '定时',
-                        onTap: () {},
-                        icon: Icons.timer,
-                      ),
-                      VIconButton(
-                        title: "列表",
-                        onTap: () {
-                          selectMusic();
-                        },
-                        icon: Icons.queue_music,
-                      ),
-                    ],
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                    child: Wrap(
+                      spacing: 30,
+                      children: [
+                        VIconButton(
+                          title: '定时',
+                          onTap: () {},
+                          icon: Icons.timer,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            logic.pause();
+                            Get.toNamed(RouterGet.mix);
+                          },
+                          child: Container(
+                            width: 80,
+                            height: 44,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                  color: Colors.black,
+                                ),
+                                borderRadius: BorderRadius.circular(22)),
+                            child: Icon(
+                              Icons.add,
+                              size: 22,
+                            ),
+                          ),
+                        ),
+                        VIconButton(
+                          title: "列表",
+                          onTap: () {
+                            selectMusic();
+                          },
+                          icon: Icons.queue_music,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )
