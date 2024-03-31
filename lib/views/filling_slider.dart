@@ -7,20 +7,25 @@ typedef FinishCallback = void Function(double value);
 typedef ChildBuilder = Widget Function(BuildContext context, double value);
 
 class FillingSlider extends StatefulWidget {
+  final double min;
+  final double max;
+
   /// Creates a IOS-like slider
-  FillingSlider(
-      {Key? key,
-      this.initialValue = 1.0,
-      this.onChange,
-      this.onFinish,
-      this.direction = FillingSliderDirection.vertical,
-      this.color = const Color.fromRGBO(46, 45, 36, 0.5),
-      this.fillColor = const Color.fromRGBO(215, 216, 218, 0.3),
-      this.child,
-      this.childBuilder,
-      this.width = 80,
-      this.height = 200})
-      : super(key: key);
+  FillingSlider({
+    Key? key,
+    this.initialValue = 1.0,
+    this.onChange,
+    this.onFinish,
+    this.direction = FillingSliderDirection.vertical,
+    this.color = const Color.fromRGBO(46, 45, 36, 0.5),
+    this.fillColor = const Color.fromRGBO(215, 216, 218, 0.3),
+    this.child,
+    this.childBuilder,
+    this.width = 80,
+    this.height = 200,
+    this.max = 1,
+    this.min = 0,
+  }) : super(key: key);
 
   /// Initial value of slider  1.0 <= value >= 0.0
   final double initialValue;
@@ -59,12 +64,12 @@ class _FillingSliderState extends State<FillingSlider> {
   }
 
   void updateData(double position) {
-    double currentValue =
-        double.parse((1 - (position / getMainAxisSize())).toStringAsFixed(2));
-    if (currentValue > 1) {
-      currentValue = 1;
-    } else if (currentValue < 0) {
-      currentValue = 0;
+    double currentValue = double.parse(
+        (widget.max - (position / getMainAxisSize())).toStringAsFixed(2));
+    if (currentValue > widget.max) {
+      currentValue = widget.max;
+    } else if (currentValue < widget.min) {
+      currentValue = widget.min;
     }
     if (widget.onChange != null) {
       widget.onChange!(currentValue, stateValue!);
@@ -108,8 +113,8 @@ class _FillingSliderState extends State<FillingSlider> {
                   widget.fillColor
                 ],
                 stops: [
-                  1 - stateValue!,
-                  0,
+                  widget.max - stateValue!,
+                  widget.min,
                 ]),
             borderRadius: BorderRadiusDirectional.circular(10)),
         child: Row(
@@ -154,8 +159,8 @@ class _FillingSliderState extends State<FillingSlider> {
                   widget.fillColor
                 ],
                 stops: [
-                  1 - stateValue!,
-                  0,
+                  widget.max - stateValue!,
+                  widget.min,
                 ]),
             borderRadius: BorderRadiusDirectional.circular(10)),
         child: Column(

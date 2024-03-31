@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:awesome_project/extensions.dart';
 import 'package:awesome_project/providers/models/gt_music.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../providers/gitlab_provider.dart';
@@ -93,6 +94,7 @@ class MixLogic extends GetxController {
     soundItem.volume = newVolume;
     final player = audioPlayerMap[soundItem.path];
     if (player != null) {
+      debugPrint("player 更新声音");
       player.setVolume(newVolume);
     }
   }

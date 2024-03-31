@@ -19,7 +19,7 @@ class MixVolumesView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10),
       alignment: Alignment.center,
       child: Wrap(
-        spacing: 10,
+        spacing: 16,
         children: logic.state.activeSound.items.map((soundItem) {
           return Container(
             child: Stack(

@@ -62,8 +62,8 @@ packages:
     description:
       path: "packages/audioplayers_web"
       ref: "mpflutter-v5.2.1"
-      resolved-ref: "6652539c35f2b019924451560a6342307c851714"
-      url: "https://github.com/mpflutter/audioplayers.git"
+      resolved-ref: "7453f84485c108f18f540acbf52587c2609e56eb"
+      url: "https://github.com/swiftdo/audioplayers.git"
     source: git
     version: "4.1.0"
   audioplayers_windows:

@@ -25,7 +25,7 @@ dependencies:
 dependency_overrides:
   audioplayers_web:
     git:
-      url: https://github.com/mpflutter/audioplayers.git
+      url: https://github.com/swiftdo/audioplayers.git
       ref: mpflutter-v5.2.1
       path: packages/audioplayers_web
 
