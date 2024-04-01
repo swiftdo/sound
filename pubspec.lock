@@ -61,8 +61,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: "packages/audioplayers_web"
-      ref: "mpflutter-v5.2.1"
-      resolved-ref: "7453f84485c108f18f540acbf52587c2609e56eb"
+      ref: "mpflutter-v5.2.1-inner"
+      resolved-ref: "08f706a92531e217ad093b03103d3d02d076b562"
       url: "https://github.com/swiftdo/audioplayers.git"
     source: git
     version: "4.1.0"
