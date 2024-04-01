@@ -66,9 +66,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     if (data != null) {
       final sound = ActiveSound.fromJson(Map<String, dynamic>.from(data));
       Future.delayed(Duration(milliseconds: 500), () {
-        logic.activeSound(sound);
-        controller_record.forward();
-        controller_needle.forward();
+        playSound(sound);
       });
     }
   }
@@ -177,8 +175,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           onTap: () async {
                             stopPlay();
                             final res = await Get.toNamed(RouterGet.mix);
-                            if (res != null) {
-                              logic.activeSound(res);
+                            if (res != null && res is ActiveSound) {
+                              playSound(res);
                             }
                           },
                           child: Container(
@@ -225,10 +223,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   selectMusic() async {
     final activeSound = await Get.toNamed(RouterGet.musics);
     if (activeSound is ActiveSound) {
-      logic.activeSound(activeSound);
-      controller_record.forward();
-      controller_needle.forward();
+      playSound(activeSound);
     }
+  }
+
+  playSound(ActiveSound activeSound) {
+    logic.activeSound(activeSound);
+    controller_record.forward();
+    controller_needle.forward();
   }
 
   void stopPlay() {
