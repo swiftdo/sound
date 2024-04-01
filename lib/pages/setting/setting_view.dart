@@ -16,6 +16,7 @@ class SettingPage extends StatelessWidget {
         title: Text('设置'),
       ),
       body: Container(
+        alignment: Alignment.center,
         child: Text('版本号: v1.0.0'),
       ),
     );

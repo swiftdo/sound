@@ -20,6 +20,7 @@ dependencies:
   flashy_tab_bar2: ^0.0.10
   flutter_svg: ^2.0.10+1
   scrollable_list_tab_scroller: ^1.1.2
+  uuid: ^4.3.3
 
 
 dependency_overrides:

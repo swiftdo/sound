@@ -174,9 +174,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           icon: Icons.timer,
                         ),
                         GestureDetector(
-                          onTap: () {
+                          onTap: () async {
                             stopPlay();
-                            Get.toNamed(RouterGet.mix);
+                            final res = await Get.toNamed(RouterGet.mix);
+                            if (res != null) {
+                              logic.activeSound(res);
+                            }
                           },
                           child: Container(
                             width: 80,

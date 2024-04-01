@@ -1,9 +1,14 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:awesome_project/constants.dart';
 import 'package:awesome_project/extensions.dart';
+import 'package:awesome_project/pages/mix/mix_pop_state.dart';
 import 'package:awesome_project/providers/models/gt_music.dart';
+import 'package:awesome_project/services/sp_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:uuid/uuid.dart';
 
+import '../../models/group_sound.dart';
 import '../../providers/gitlab_provider.dart';
 import 'mix_state.dart';
 
@@ -97,5 +102,18 @@ class MixLogic extends GetxController {
       debugPrint("player 更新声音");
       player.setVolume(newVolume);
     }
+  }
+
+  GroupSound saveMix(MixPopState result) {
+    state.activeSound.name = result.title;
+    state.activeSound.icon = result.path;
+    state.activeSound.cover = "";
+    state.activeSound.id = Uuid().v4();
+
+    final spService = Get.find<SpService>();
+    Map cacheMap = spService.getObject(Constants.cacheMixMapKey) ?? Map();
+    cacheMap[state.activeSound.id] = state.activeSound.toJson();
+    spService.putObject(Constants.cacheMixMapKey, cacheMap);
+    return state.activeSound;
   }
 }

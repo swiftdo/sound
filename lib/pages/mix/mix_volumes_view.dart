@@ -22,40 +22,58 @@ class MixVolumesView extends StatelessWidget {
         spacing: 16,
         children: logic.state.activeSound.items.map((soundItem) {
           return Container(
-            child: Stack(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                FillingSlider(
-                  width: size,
-                  height: 200,
-                  direction: FillingSliderDirection.vertical,
-                  initialValue: soundItem.volume,
-                  onFinish: (volume) {
-                    logic.updateSoundVolume(
-                      soundItem: soundItem,
-                      newVolume: volume,
-                    );
-                  },
-                  onChange: (newVolume, oldVolume) {
-                    logic.updateSoundVolume(
-                      soundItem: soundItem,
-                      newVolume: newVolume,
-                    );
-                    print("$newVolume $oldVolume");
-                  },
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    width: size,
-                    height: size,
-                    alignment: Alignment.center,
-                    child: SvgPicture.network(
-                      soundItem.icon.url,
-                      width: 20,
-                      height: 20,
+                Stack(
+                  children: [
+                    FillingSlider(
+                      width: size,
+                      height: 200,
+                      direction: FillingSliderDirection.vertical,
+                      initialValue: soundItem.volume,
+                      onFinish: (volume) {
+                        logic.updateSoundVolume(
+                          soundItem: soundItem,
+                          newVolume: volume,
+                        );
+                      },
+                      onChange: (newVolume, oldVolume) {
+                        logic.updateSoundVolume(
+                          soundItem: soundItem,
+                          newVolume: newVolume,
+                        );
+                      },
                     ),
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        width: size,
+                        height: size,
+                        alignment: Alignment.center,
+                        child: SvgPicture.network(
+                          soundItem.icon.url,
+                          width: 20,
+                          height: 20,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    logic.selectSound(soundItem);
+                  },
+                  child: SvgPicture.network(
+                    "remove".svg,
+                    width: 24,
+                    height: 24,
+                    color: Colors.grey,
                   ),
                 )
               ],
