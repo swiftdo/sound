@@ -105,8 +105,8 @@ class MixLogic extends GetxController {
   }
 
   GroupSound saveMix(MixPopState result) {
-    state.activeSound.name = result.title;
-    state.activeSound.icon = result.path;
+    state.activeSound.name = result.title ?? '';
+    state.activeSound.icon = result.path ?? '';
     state.activeSound.cover = "";
     state.activeSound.id = Uuid().v4();
 

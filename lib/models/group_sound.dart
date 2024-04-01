@@ -2,25 +2,25 @@
 import '../providers/models/gt_music.dart';
 
 class GroupSound {
-  String? name; // 名字
-  String? icon; // icon
-  String? cover;
-  String? id; // uuid 吧
+  String name; // 名字
+  String icon; // icon
+  String cover;
+  String id; // uuid 吧
   List<GtMusicItem> items; // 音乐组合
 
   GroupSound({
-    this.name,
-    this.icon,
-    this.cover,
-    this.id,
+    this.name = '',
+    this.icon = '',
+    this.cover = '',
+    this.id = '',
     this.items = const [],
   });
 
   GroupSound.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        icon = json['icon'],
-        cover = json['cover'],
-        id = json['id'],
+      : name = json['name'] ?? '',
+        icon = json['icon'] ?? '',
+        cover = json['cover'] ?? '',
+        id = json['id'] ?? '',
         items = (json['items'] as List)
             .map((e) => GtMusicItem.fromJson(e))
             .toList();

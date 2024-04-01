@@ -7,4 +7,6 @@ class Constants {
   static String cacheActiveSound = "cacheActiveSound";
 
   static String cacheMixMapKey = "cacheMixMapKey";
+
+  static String mixName = "混音";
 }
