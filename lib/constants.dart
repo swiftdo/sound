@@ -9,4 +9,6 @@ class Constants {
   static String cacheMixMapKey = "cacheMixMapKey";
 
   static String mixName = "混音";
+
+  static String launchPlayKey = "cacheLaunchPlayKey";
 }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants.dart';
+import '../../providers/models/gt_music.dart';
 import 'home_state.dart';
 
 class HomeLogic extends GetxController {
@@ -28,7 +29,7 @@ class HomeLogic extends GetxController {
     super.onClose();
   }
 
-  activeSound(ActiveSound sound) {
+  activeSound(ActiveSound sound, {bool autoPlay = true}) {
     for (final audioPlayer in audioPlayers) {
       audioPlayer.stop();
       audioPlayer.dispose();
@@ -42,11 +43,25 @@ class HomeLogic extends GetxController {
     for (final item in sound.items) {
       final audioPlayer = AudioPlayer();
       audioPlayer.setReleaseMode(ReleaseMode.loop);
-      audioPlayer.play(UrlSource(item.path.url), volume: item.volume);
+
+      _audioPlayer(audioPlayer, item: item, autoPlay: autoPlay);
+
       audioPlayers.add(audioPlayer);
     }
-    state.isPlaying = true;
+    state.isPlaying = autoPlay;
     update();
+  }
+
+  _audioPlayer(AudioPlayer audioPlayer,
+      {required GtMusicItem item, bool autoPlay = true}) async {
+    try {
+      await audioPlayer.play(UrlSource(item.path.url), volume: item.volume);
+      if (!autoPlay) {
+        audioPlayer.pause();
+      }
+    } catch (e) {
+      debugPrint("🐶：：$e");
+    }
   }
 
   // 暂停

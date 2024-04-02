@@ -61,12 +61,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   getCacheData() async {
     debugPrint("🐶：：SpService HomeView use");
-    final data = Get.find<SpService>().getObject(Constants.cacheActiveSound);
+    final spService = Get.find<SpService>();
+    final data = spService.getObject(Constants.cacheActiveSound);
+    final launchPlay =
+        spService.getBool(Constants.launchPlayKey, defValue: true) ?? true;
+
     debugPrint("🐶：：SpService HomeView use Success");
     if (data != null) {
       final sound = ActiveSound.fromJson(Map<String, dynamic>.from(data));
       Future.delayed(Duration(milliseconds: 500), () {
-        playSound(sound);
+        playSound(
+          sound,
+          autoPlay: launchPlay,
+        );
       });
     }
   }
@@ -227,10 +234,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     }
   }
 
-  playSound(ActiveSound activeSound) {
-    logic.activeSound(activeSound);
-    controller_record.forward();
-    controller_needle.forward();
+  playSound(ActiveSound activeSound, {bool autoPlay = true}) {
+    logic.activeSound(activeSound, autoPlay: autoPlay);
+    if (autoPlay) {
+      controller_record.forward();
+      controller_needle.forward();
+    }
   }
 
   void stopPlay() {

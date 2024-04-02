@@ -20,7 +20,7 @@ class GtMusicItem {
         path = json['path'],
         icon = json['icon'],
         cover = json['cover'],
-        volume = json['volume'] ?? 0.5,
+        volume = json['volume'] ?? 1.0,
         hideName = json['hide_name'];
 
   Map<String, dynamic> toJson() => {
