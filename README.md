@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/swiftdo/pics/main/banner.png)
+![](https://raw.githubusercontent.com/swiftdo/pics/main/soundlogo2.png)
 
 # 觅音
 
