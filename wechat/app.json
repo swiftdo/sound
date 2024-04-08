@@ -6,7 +6,10 @@
     "navigationBarTitleText": "MyApp",
     "navigationBarTextStyle": "black"
   },
-  "requiredBackgroundModes": ["audio", "clipboard"],
+  "requiredBackgroundModes": ["audio"],
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.writeClipboard": true
+  }
 }

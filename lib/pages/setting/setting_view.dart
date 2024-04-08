@@ -80,12 +80,12 @@ class SettingPage extends StatelessWidget {
                                   ..fail = (err) {
                                     Get.snackbar(
                                       "复制失败",
-                                      "请重试::$err",
+                                      "请重试::${err.errMsg}",
                                       margin: EdgeInsets.all(20),
                                     );
                                   }
                                   ..complete = (res) {
-                                    debugPrint("复制完成:: $res");
+                                    debugPrint("复制完成:: ${res.errMsg}");
                                   };
                                 wx.setClipboardData(opt);
                               }
