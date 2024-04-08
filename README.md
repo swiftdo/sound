@@ -36,4 +36,4 @@ build/wechat 目录下就是最终产物.
 
 ## 趋势
 
-![](https://api.github.com/repos/swiftdo/sound)
+![](https://starchart.cc/swiftdo/sound)
