@@ -1,4 +1,4 @@
-[![Project Icon](https://raw.githubusercontent.com/swiftdo/pics/main/soundlog.png)](OHeroJ/sound.git)
+[![Project Icon](https://raw.githubusercontent.com/swiftdo/pics/main/soundlog.png)](swiftdo/sound.git)
 
 # 觅音
 
@@ -13,7 +13,7 @@ build/wechat 目录下就是最终产物.
 
 觅音已上线，欢迎下载体验!
 
-<img src="https://raw.githubusercontent.com/swiftdo/pics/main/15121712050137_.pic.jpg" alt="Your Image" width="300" height="200">
+<img src="https://raw.githubusercontent.com/swiftdo/pics/main/15121712050137_.pic.jpg" alt="Your Image" width="300" >
 
 ## 调试
 
@@ -36,4 +36,4 @@ build/wechat 目录下就是最终产物.
 
 ## 趋势
 
-![](https://api.github.com/repos/OHeroJ/sound)
+![](https://api.github.com/repos/swiftdo/sound)
