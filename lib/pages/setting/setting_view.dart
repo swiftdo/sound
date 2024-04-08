@@ -1,3 +1,4 @@
+import 'package:awesome_project/constants.dart';
 import 'package:awesome_project/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -117,8 +118,7 @@ class SettingPage extends StatelessWidget {
                             onTap: () {
                               if (kIsMPFlutter) {
                                 final opt = SetClipboardDataOption()
-                                  ..data =
-                                      'https://github.com/mpflutter/mpflutter'
+                                  ..data = Constants.mpflutterUrl
                                   ..success = (res) {
                                     Get.snackbar(
                                       "复制成功",
