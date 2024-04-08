@@ -36,4 +36,4 @@ build/wechat 目录下就是最终产物.
 
 ## 趋势
 
-![](https://api.github.com/repos/OHeroj/sound)
+![](https://api.github.com/repos/OHeroJ/sound)
