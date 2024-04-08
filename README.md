@@ -1,6 +1,4 @@
-[![Project Icon](https://raw.githubusercontent.com/swiftdo/pics/main/soundlog.png)](swiftdo/sound.git)
-
-觅音 – 以大自然的声音为灵感，轻松创建专注或放松的音乐氛围。无论是在繁忙的办公室，还是在家中的安静角落，觅音将简约与宁静相结合，帮助您从快节奏中脱离，为您提供一个没有干扰的平静时空，保持专注、冥想片刻、放松思绪。
+![](https://raw.githubusercontent.com/swiftdo/pics/main/banner.png)
 
 # 觅音
 
