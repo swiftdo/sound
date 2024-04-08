@@ -34,7 +34,7 @@ build/wechat 目录下就是最终产物.
 
 * [ ] 定时功能
 * [ ] 编辑功能
-* [ ] 跳转到客服
+* [x] 问题反馈
 
 
 ## Stargazers over time

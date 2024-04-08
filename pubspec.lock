@@ -236,6 +236,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.2"
+  mpflutter_wechat_button:
+    dependency: "direct main"
+    description:
+      name: mpflutter_wechat_button
+      sha256: "4ec7c7ac0a48dd85df0b2105cbe467b3a0e1e24a640c09cc10b029f09ae93be2"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.0"
   mpflutter_wechat_mapview:
     dependency: "direct main"
     description:

@@ -1,9 +1,11 @@
+import 'package:awesome_project/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'setting_logic.dart';
 import 'package:mpflutter_core/mpflutter_core.dart';
 import 'package:mpflutter_wechat_api/mpflutter_wechat_api.dart';
+import 'package:mpflutter_wechat_button/mpflutter_wechat_button.dart';
 
 class SettingPage extends StatelessWidget {
   SettingPage({Key? key}) : super(key: key);
@@ -36,17 +38,64 @@ class SettingPage extends StatelessWidget {
                     ]),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('启动后自动播放'),
-                        Checkbox(
-                          value: state.launchPlay,
-                          onChanged: (val) {
-                            logic.changeLaunchPlay(val ?? false);
-                          },
+                    Container(
+                      height: 50,
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('启动后自动播放'),
+                          Checkbox(
+                            value: state.launchPlay,
+                            onChanged: (val) {
+                              logic.changeLaunchPlay(val ?? false);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      height: 50,
+                      child: MPFlutter_Wechat_Button(
+                        openType: "contact",
+                        onContact: (detail) {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('问题反馈'),
+                            Container(
+                              margin: EdgeInsets.only(right: 12),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                size: 20,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      height: 50,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RouterGet.aboutus);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('关于我们'),
+                            Container(
+                              margin: EdgeInsets.only(right: 12),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                size: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     )
                   ],
                 ),
