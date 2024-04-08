@@ -36,6 +36,6 @@ build/wechat 目录下就是最终产物.
 * [ ] 编辑功能
 * [ ] 跳转到客服
 
-## 趋势
 
-![](https://starchart.cc/swiftdo/sound)
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/swiftdo/sound.svg?variant=adaptive)](https://starchart.cc/swiftdo/sound)
