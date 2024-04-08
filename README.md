@@ -1,5 +1,7 @@
 # 觅音
 
+[![Project Icon](![](https://raw.githubusercontent.com/swiftdo/pics/main/soundlog.png))](OHeroJ/sound.git)
+
 ```shell
 $ fvm use 3.16.7
 $ fvm flutter packages upgrade
@@ -11,7 +13,7 @@ build/wechat 目录下就是最终产物.
 
 觅音已上线，欢迎下载体验!
 
-![](https://raw.githubusercontent.com/swiftdo/pics/main/15121712050137_.pic.jpg)
+<img src="https://raw.githubusercontent.com/swiftdo/pics/main/15121712050137_.pic.jpg" alt="Your Image" width="300" height="200">
 
 ## 调试
 
