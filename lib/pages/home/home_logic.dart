@@ -2,8 +2,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:awesome_project/extensions.dart';
 import 'package:awesome_project/models/active_sound.dart';
 import 'package:awesome_project/services/sp_service.dart';
+import 'package:awesome_project/util/mini_wechat_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mpflutter_wechat_api/mpflutter_wechat_api.dart';
 
 import '../../constants.dart';
 import '../../providers/models/gt_music.dart';
@@ -29,6 +31,7 @@ class HomeLogic extends GetxController {
     super.onClose();
   }
 
+  // 重新设置播放源
   activeSound(ActiveSound sound, {bool autoPlay = true}) {
     for (final audioPlayer in audioPlayers) {
       audioPlayer.stop();
@@ -52,12 +55,18 @@ class HomeLogic extends GetxController {
     update();
   }
 
-  _audioPlayer(AudioPlayer audioPlayer,
-      {required GtMusicItem item, bool autoPlay = true}) async {
+  _audioPlayer(
+    AudioPlayer audioPlayer, {
+    required GtMusicItem item,
+    bool autoPlay = true,
+  }) async {
     try {
       await audioPlayer.play(UrlSource(item.path.url), volume: item.volume);
       if (!autoPlay) {
         audioPlayer.pause();
+        MiniWechatUtil.allowSleep();
+      } else {
+        MiniWechatUtil.keepWeak();
       }
     } catch (e) {
       debugPrint("🐶：：$e");
@@ -70,7 +79,8 @@ class HomeLogic extends GetxController {
       audioPlayer.pause();
     }
     state.isPlaying = false;
-    refresh();
+    update();
+    MiniWechatUtil.allowSleep();
   }
 
   // 播放
@@ -79,6 +89,7 @@ class HomeLogic extends GetxController {
       audioPlayer.resume();
     }
     state.isPlaying = true;
-    refresh();
+    update();
+    MiniWechatUtil.keepWeak();
   }
 }

@@ -15,6 +15,8 @@ class SettingLogic extends GetxController {
     final spService = Get.find<SpService>();
     state.launchPlay =
         spService.getBool(Constants.launchPlayKey, defValue: true) ?? true;
+    state.playKeepWeak =
+        spService.getBool(Constants.playKeepWeakKey, defValue: true) ?? true;
     update();
   }
 
@@ -22,6 +24,11 @@ class SettingLogic extends GetxController {
     state.launchPlay = launchPlay;
     Get.find<SpService>().putBool(Constants.launchPlayKey, launchPlay);
     update();
+  }
+
+  void changePlayKeepWeak(bool playKeepWeak) {
+    state.playKeepWeak = playKeepWeak;
+    Get.find<SpService>().putBool(Constants.playKeepWeakKey, playKeepWeak);
   }
 
   @override

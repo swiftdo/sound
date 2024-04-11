@@ -1,5 +1,6 @@
 import 'package:awesome_project/constants.dart';
 import 'package:awesome_project/router.dart';
+import 'package:awesome_project/util/mini_wechat_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,6 +49,22 @@ class SettingPage extends StatelessWidget {
                           Text('启动后自动播放'),
                           Checkbox(
                             value: state.launchPlay,
+                            onChanged: (val) {
+                              logic.changeLaunchPlay(val ?? false);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('播放时保持不息屏'),
+                          Checkbox(
+                            value: state.playKeepWeak,
                             onChanged: (val) {
                               logic.changeLaunchPlay(val ?? false);
                             },
@@ -117,26 +134,7 @@ class SettingPage extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               if (kIsMPFlutter) {
-                                final opt = SetClipboardDataOption()
-                                  ..data = Constants.mpflutterUrl
-                                  ..success = (res) {
-                                    Get.snackbar(
-                                      "复制成功",
-                                      "已将链接拷贝到粘贴板中",
-                                      margin: EdgeInsets.all(20),
-                                    );
-                                  }
-                                  ..fail = (err) {
-                                    Get.snackbar(
-                                      "复制失败",
-                                      "请重试::${err.errMsg}",
-                                      margin: EdgeInsets.all(20),
-                                    );
-                                  }
-                                  ..complete = (res) {
-                                    debugPrint("复制完成:: ${res.errMsg}");
-                                  };
-                                wx.setClipboardData(opt);
+                                MiniWechatUtil.copyText(Constants.mpflutterUrl);
                               }
                             },
                             child: Text(

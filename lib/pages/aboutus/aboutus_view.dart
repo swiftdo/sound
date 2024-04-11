@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mpflutter_wechat_api/mpflutter_wechat_api.dart';
 
+import '../../util/mini_wechat_util.dart';
 import 'aboutus_logic.dart';
 
 class AboutusPage extends StatelessWidget {
@@ -45,26 +46,7 @@ class AboutusPage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 30),
                 child: GestureDetector(
                   onTap: () {
-                    final opt = SetClipboardDataOption()
-                      ..data = Constants.soundUrl
-                      ..success = (res) {
-                        Get.snackbar(
-                          "复制成功",
-                          "已将链接拷贝到粘贴板中",
-                          margin: EdgeInsets.all(20),
-                        );
-                      }
-                      ..fail = (err) {
-                        Get.snackbar(
-                          "复制失败",
-                          "请重试::${err.errMsg}",
-                          margin: EdgeInsets.all(20),
-                        );
-                      }
-                      ..complete = (res) {
-                        debugPrint("复制完成:: ${res.errMsg}");
-                      };
-                    wx.setClipboardData(opt);
+                    MiniWechatUtil.copyText(Constants.soundUrl);
                   },
                   child: Row(
                     children: [
