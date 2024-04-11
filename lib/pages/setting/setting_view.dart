@@ -66,7 +66,7 @@ class SettingPage extends StatelessWidget {
                           Checkbox(
                             value: state.playKeepWeak,
                             onChanged: (val) {
-                              logic.changeLaunchPlay(val ?? false);
+                              logic.changePlayKeepWeak(val ?? false);
                             },
                           ),
                         ],
