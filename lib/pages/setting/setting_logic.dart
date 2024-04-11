@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../constants.dart';
 import '../../services/sp_service.dart';
+import '../../util/mini_wechat_util.dart';
 import 'setting_state.dart';
 
 class SettingLogic extends GetxController {
@@ -29,6 +30,7 @@ class SettingLogic extends GetxController {
   void changePlayKeepWeak(bool playKeepWeak) {
     state.playKeepWeak = playKeepWeak;
     Get.find<SpService>().putBool(Constants.playKeepWeakKey, playKeepWeak);
+    update();
   }
 
   @override
