@@ -128,7 +128,7 @@ class SettingPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '觅音由 ',
+                            '由 ',
                             style: TextStyle(color: Colors.grey, fontSize: 14),
                           ),
                           GestureDetector(
@@ -138,7 +138,7 @@ class SettingPage extends StatelessWidget {
                               }
                             },
                             child: Text(
-                              'mpflutter2.0',
+                              'mpflutter',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
@@ -147,8 +147,27 @@ class SettingPage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            ' 构建',
+                            ' 构建，',
                             style: TextStyle(color: Colors.grey, fontSize: 14),
+                          ),
+                          Text(
+                            ' 开源：',
+                            style: TextStyle(color: Colors.grey, fontSize: 14),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              if (kIsMPFlutter) {
+                                MiniWechatUtil.copyText(Constants.soundUrl);
+                              }
+                            },
+                            child: Text(
+                              'swiftdo/sound',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ],
                       ),
