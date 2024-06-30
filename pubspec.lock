@@ -216,18 +216,18 @@ packages:
     dependency: "direct main"
     description:
       name: mpflutter_build_tools
-      sha256: "9df5571c7213f2d5709e3d52d2c3f01bc22445308687fee8adb17d1211c4d819"
+      sha256: "088f9634bc7fa84a50eee48364b810b4af527537b1dc2272b3950ff4ea5f53ed"
       url: "https://pub.dev"
     source: hosted
-    version: "2.6.2"
+    version: "2.6.4"
   mpflutter_core:
     dependency: "direct main"
     description:
       name: mpflutter_core
-      sha256: "0349b54311ce916050fc316c8875c1282c698f1a212c8d9e3e164171b32ecb94"
+      sha256: fb9e9d44a52f610189a9478312b772eeb4584000c1c9f904e89f33d4d9c26289
       url: "https://pub.dev"
     source: hosted
-    version: "2.6.0"
+    version: "2.6.1"
   mpflutter_wechat_api:
     dependency: "direct main"
     description:
@@ -328,10 +328,10 @@ packages:
     dependency: transitive
     description:
       name: platform
-      sha256: "12220bb4b65720483f8fa9450b4332347737cf8213dd2840d8b2c823e47243ec"
+      sha256: "9b71283fc13df574056616011fb138fd3b793ea47cc509c189a6c3fa5f8a1a65"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.4"
+    version: "3.1.5"
   plugin_platform_interface:
     dependency: transitive
     description:

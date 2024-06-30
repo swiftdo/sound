@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  mpflutter_core: ^2.6.0
-  mpflutter_build_tools: ^2.6.2
+  mpflutter_core: ^2.6.1
+  mpflutter_build_tools: ^2.6.4
   mpflutter_wechat_api: ^2.2.3
   mpflutter_wechat_mapview: ^0.0.3
   get: ^4.6.6
