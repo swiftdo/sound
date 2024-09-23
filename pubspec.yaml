@@ -2,24 +2,24 @@ name: awesome_project
 description: A new Flutter project.
 publish_to: 'none'
 
-version: 1.0.1+1
+version: 1.0.2+1
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  mpflutter_core: ^2.6.1
-  mpflutter_build_tools: ^2.6.4
-  mpflutter_wechat_api: ^2.2.3
+  mpflutter_core: ^2.7.5
+  mpflutter_build_tools: ^2.7.5
+  mpflutter_wechat_api: ^2.2.4
   mpflutter_wechat_mapview: ^0.0.3
   get: ^4.6.6
   audioplayers: ^5.2.0
   shared_preferences: ^2.2.2
   flashy_tab_bar2: ^0.0.10
   flutter_svg: ^2.0.10+1
-  scrollable_list_tab_scroller: ^2.0.1
+  scrollable_list_tab_scroller: ^3.1.0
   uuid: ^4.3.3
   mpflutter_wechat_button: ^0.1.0
 
