@@ -118,10 +118,10 @@ packages:
     dependency: transitive
     description:
       name: es_compression
-      sha256: bc412135d4c9338e25f2c06dc919d102653c3ac49123e79f6f9fa13df84bd26e
+      sha256: b74194ef670a0ea26106f0cc96131cf05c65706467ed985096b6fab501ca7028
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.13"
+    version: "2.0.12"
   ffi:
     dependency: transitive
     description:
@@ -224,10 +224,10 @@ packages:
     dependency: "direct main"
     description:
       name: mpflutter_build_tools
-      sha256: "6a632f2a598df643bd851e558a0f3fee9d380a18c563889c6041fc2d243006fb"
+      sha256: bf16f424d6489d5f2f72280bba61f91def8ba0088070ac32c3c4f41a4b44bfdf
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.5"
+    version: "2.7.6"
   mpflutter_core:
     dependency: "direct main"
     description:

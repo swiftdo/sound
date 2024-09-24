@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   mpflutter_core: ^2.7.5
-  mpflutter_build_tools: ^2.7.5
+  mpflutter_build_tools: ^2.7.6
   mpflutter_wechat_api: ^2.2.4
   mpflutter_wechat_mapview: ^0.0.3
   get: ^4.6.6
