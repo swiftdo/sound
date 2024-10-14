@@ -5,7 +5,7 @@
 项目由 [mpflutter2](https://github.com/mpflutter/mpflutter) 构建。
 
 ```shell
-$ fvm use 3.16.7
+$ fvm use stable
 $ fvm flutter packages upgrade
 $ fvm flutter packages get 
 $ fvm dart scripts/build_wechat.dart
