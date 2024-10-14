@@ -13,7 +13,7 @@ class GitlabProvider extends GetConnect {
 
   Future<GtMain> getMainJson() async {
     final response = await get('music.json');
-    final body = jsonDecode(response.body);
+    final body = jsonDecode(response.bodyString!);
     return GtMain.fromJson(body);
   }
 }

@@ -1,5 +1,7 @@
 class Constants {
-  static String gitlabBaseUrl = "https://framagit.org/oheroj/sound/-/raw/main/";
+  // static String gitlabBaseUrl = "https://framagit.org/oheroj/sound/-/raw/main/";
+
+  static String gitlabBaseUrl = "https://gitee.com/jihulai/sound/raw/main/";
 
   // static String gitlabBaseUrl =
   //     "https://framagit.org/oheroj/sound/-/raw/main/";
